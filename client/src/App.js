@@ -7,6 +7,12 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [audioName, setAudioName] = useState('');
 
+  const handleClearText = () => {
+    setVideoUrl('');
+    setDownloadLink('');
+    setAudioName('');
+  }
+
   const getVideoUrl = async (e) => {
     e.preventDefault(); 
     setLoading(true);
@@ -57,6 +63,7 @@ function App() {
             onChange={(e) => setVideoUrl(e.target.value)} 
             required 
           />
+          <button onClick={handleClearText}>X</button>
           <button type="submit">{ loading ? "loading" : "Convert" }</button>
           <p>Note: Only YouTube videos are supported.</p>
         </form>
