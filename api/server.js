@@ -37,8 +37,14 @@ app.post('/download', async (req, res) => {
     
   } catch (error) {
     console.error('Error downloading video:', error);
+    
+    // Handle specific error codes
     if (error.statusCode === 403) {
       res.status(403).send('Access denied: Unable to download this video.');
+    } else if (error.statusCode === 410) {
+      res.status(410).send('The requested video is no longer available.');
+    } else if (error.statusCode === 404) {
+      res.status(404).send('Video not found.');
     } else {
       res.status(500).send('Failed to download video.');
     }
