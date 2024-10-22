@@ -18,7 +18,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/download', {
+      const response = await fetch('https://yttomp3-lfah.onrender.com/download', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
